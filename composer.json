@@ -1,0 +1,33 @@
+{
+  "name": "marco-introini/xml-logger",
+  "description": "XML logger for SOAP WEb Services",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marco Introini",
+      "email": "mint.dev@pm.me",
+      "homepage": "http://marcointroini.it"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "nesbot/carbon": "^2.62",
+    "monolog/monolog": "^3.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "pestphp/pest": "^1.22",
+    "pestphp/pest-plugin-faker": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mintdev\\Xml\\Logger\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
