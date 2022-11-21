@@ -9,7 +9,7 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-class XmlLogger
+class SoapLogger
 {
 
     private Logger $logger;

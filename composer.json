@@ -1,6 +1,6 @@
 {
-  "name": "marco-introini/xml-logger",
-  "description": "XML logger for SOAP WEb Services",
+  "name": "marco-introini/soap-logger",
+  "description": "Simple PHP Soap logger",
   "license": "MIT",
   "authors": [
     {

@@ -1,11 +1,11 @@
-# XML logger for SOAP WEb Services
+# Soap logger for Web Services
 
 ## Installation
 
 Installation is possible using Composer
 
 ```
-composer require marco-introini/xml-logger
+composer require marco-introini/soap-logger
 ```
 
 ## Usage
