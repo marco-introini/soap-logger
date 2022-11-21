@@ -29,7 +29,7 @@ class SoapLogger
         return Carbon::now()->format('d-j-Y G:i:s:v');
     }
 
-    public function logGenerico(string $message, Step $step): void
+    public function log(string $message, Step $step): void
     {
         $soapAction = $_SERVER['HTTP_SOAPACTION'] ?? "n/a";
 
