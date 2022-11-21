@@ -14,8 +14,7 @@ class SoapLogger
 
     private Logger $logger;
 
-    public function __construct(string $logFile,
-        private StreamHandler|RotatingFileHandler $handler,
+    public function __construct(private StreamHandler|RotatingFileHandler $handler,
         FormatterInterface $formatter,
         private readonly string $serviceName,
         private readonly ?string $methodName)
