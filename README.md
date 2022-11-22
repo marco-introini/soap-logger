@@ -78,7 +78,16 @@ The make factory accept these parameters:
 - number of files to rotate (will be kept these number of log-rotation)
 - log Level
 
-See this example
+```php
+$handler = RotateOnFileSizeHandler::make($_ENV['LOGFILE'],50000000,1,Level::Info);
+$formatter = new SplunkLineFormatter(allowInlineLineBreaks: true, quoteReplacement: "");
+
+$soapLogger = new SoapLogger($handler,$formatter,"MyDemoService","myMethod");
+
+$soapLogger->log(file_get_contents('php://input'),Step::FROM_CALLER_TO_SERVICE);
+```
+
+Using standard Monolog Logger:
 
 ```php
 $handler = RotateOnFileSizeHandler::make($logfile, 1000, 1, Level::Info);
