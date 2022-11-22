@@ -52,6 +52,28 @@ test('log rotation works', function () use ($baseDir){
     assertFileExists($expectedLogRotation);
 });
 
+test('log rotation is not called for small files', function () use ($baseDir){
+    $logTemp = $baseDir.'/test.log';
+    $expectedLogRotation = $baseDir.'/test-1.log';
+
+    // first generation
+    $handler = RotateOnFileSizeHandler::make($logTemp,1000,2, Level::Info);
+
+    $logger = new Monolog\Logger($logTemp);
+    $logger->pushHandler($handler);
+
+    $logger->log(Level::Info,faker()->text(500));
+
+    // second generation
+    $handler = RotateOnFileSizeHandler::make($logTemp,1000,2, Level::Info);
+    $logger = new Monolog\Logger($logTemp);
+    $logger->pushHandler($handler);
+
+    $logger->log(Level::Info,faker()->text(400));
+
+    assertFileDoesNotExist($expectedLogRotation);
+});
+
 test('log rotation deletes older files', function () use ($baseDir){
     $logTemp = $baseDir.'/test.log';
     $expectedLogRotation = $baseDir.'/test-2.log';
