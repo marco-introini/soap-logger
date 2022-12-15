@@ -17,7 +17,8 @@ class SoapLogger
     public function __construct(private StreamHandler|RotatingFileHandler $handler,
         FormatterInterface $formatter,
         private readonly string $serviceName,
-        private readonly ?string $methodName)
+        private readonly ?string $methodName,
+        private readonly ?string $correlationId)
     {
         $this->logger = new Logger("splunk");
         $this->handler->setFormatter($formatter);
@@ -36,8 +37,9 @@ class SoapLogger
         $this->logger->info($step->value, [
             'date' => $this->date(),
             'serviceName' => $this->serviceName,
-            'soapAction' => $soapAction,
             'methodName' => $this->methodName ?? "n/a",
+            'correlationId' => $this->correlationId ?? "n/a",
+            'soapAction' => $soapAction,
             'step' => $step->value,
             'message' => $message,
         ]);
